@@ -26,6 +26,8 @@ import 'tippy.js/dist/tippy.css';
 import images from '~/assets/images';
 import { useState, useEffect } from 'react';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -140,7 +142,7 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -152,10 +154,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
-                                alt="Tran Bao Linh"
+                                src="https://p16-sign-va.tiktokcdnasda.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
+                                alt="Tran Bao Linh" 
+                                fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
