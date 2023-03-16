@@ -16,18 +16,17 @@ import {
     faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
+
 import Button from '~/components/Button';
-import AccountItem from '~/components/AccountItem';
 import styles from './Header.module.scss';
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react/';
 import 'tippy.js/dist/tippy.css';
 import images from '~/assets/images';
-import { useState, useEffect } from 'react';
 import Menu from '~/components/Popper/Menu';
 import { UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
+
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -63,13 +62,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = true;
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -83,24 +76,24 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/@hoaa', 
+            to: '/@hoaa',
         },
         {
             icon: <FontAwesomeIcon icon={faCoins} />,
             title: 'Get coins',
-            to: '/coin', 
+            to: '/coin',
         },
         {
             icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
             to: '/settings',
         },
-        ...MENU_ITEMS, 
+        ...MENU_ITEMS,
         {
             icon: <FontAwesomeIcon icon={faSignOut} />,
             title: 'Logout',
-            to: '/logout', 
-            separate: true
+            to: '/logout',
+            separate: true,
         },
     ];
 
@@ -110,33 +103,7 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
@@ -157,7 +124,7 @@ function Header() {
                             <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-va.tiktokcdnasda.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
-                                alt="Tran Bao Linh" 
+                                alt="Tran Bao Linh"
                                 fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
                             />
                         ) : (
