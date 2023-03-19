@@ -125,7 +125,7 @@ function Header() {
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-va.tiktokcdnasda.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
                                 alt="Tran Bao Linh"
-                                fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
+                                // fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0edde8a04306f0333eff33612efed0fa~c5_100x100.jpeg?x-expires=1679130000&x-signature=u19nQ4tLyAa%2BvhHPnU%2Bol5EU5HU%3D"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
